@@ -11,7 +11,7 @@ from urllib2 import Request
 from urllib2 import HTTPError, URLError
 
 # CONSTANTS
-BASE_URL = 'https://soundspot.fm'
+BASE_URL = 'http://soundspot.fm'
 
 ## Autocomplete
 URL_AC_VENUES = '/api/ac/venues'
