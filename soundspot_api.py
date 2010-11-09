@@ -1,8 +1,20 @@
-""" Soundspot API
+""" Soundspot API wrappers.
 
-Examples of API usage.
-This is an alpha version. API will be changed.
-Please send feature requests and questions to alex at extensibl.com
+Note for developers with no Python knowledge:
+
+>>> urlparse.urljoin('http://soundspot.fm', '/api/test')
+'http://soundspot.fm/api/test'
+
+>>> urllib.urlencode({ 'q': 'a', 'limit': 15, 'offset': 30 }) 
+'q=a&limit=15&offset=30'
+
+
+Wrappers in other languages (PHP, Objective C, etc.) 
+could be added on request.
+
+Please send feature requests and questions related to API 
+to alex at extensibl.com
+
 """
 
 import urllib, urllib2
@@ -41,8 +53,8 @@ def api_ac_venues(q, limit = 10, offset = 0):
 
     """
     url = urlparse.urljoin(BASE_URL, URL_AC_VENUES)
-    data = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset }) 
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
+    params = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset }) 
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
 
 
 def api_ac_artists(q, limit = 10, offset = 0, url = ''):
@@ -59,8 +71,8 @@ def api_ac_artists(q, limit = 10, offset = 0, url = ''):
 
     """
     url = urlparse.urljoin(BASE_URL, URL_AC_ARTISTS)
-    data = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset })
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
+    params = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset })
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
 
 
 def api_search(venue = '', artist = '', date = '', limit = 10, offset = 0):
@@ -91,11 +103,11 @@ def api_search(venue = '', artist = '', date = '', limit = 10, offset = 0):
           
     """
     url = urlparse.urljoin(BASE_URL, URL_SEARCH)
-    data = urllib.urlencode({'venue' : venue, 
+    params = urllib.urlencode({'venue' : venue, 
                              'artist': artist, 
                              'date': date,
                              'limit' : limit, 'offset': offset})
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
 
 def api_get_venue(object_id = '', name = ''):
     """ Get venue by its name and/or object id
@@ -106,8 +118,8 @@ def api_get_venue(object_id = '', name = ''):
     
     """
     url = urlparse.urljoin(BASE_URL, URL_VENUE_GET)
-    data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
+    params = urllib.urlencode({'object_id' : object_id, 'name': name})
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
 
 
 def api_get_artist(object_id = '', name = ''):
@@ -119,8 +131,9 @@ def api_get_artist(object_id = '', name = ''):
         
     """
     url = urlparse.urljoin(BASE_URL, URL_ARTIST_GET)
-    data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
+    params = urllib.urlencode({'object_id' : object_id, 'name': name})
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
+
 
 def api_get_gig(object_id = '', name = ''):
     """ Get gig by its name and/or object id
@@ -131,10 +144,10 @@ def api_get_gig(object_id = '', name = ''):
         
     """
     url = urlparse.urljoin(BASE_URL, URL_GIG_GET)
-    data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
-    
-if __name__ == '__main__':
+    params = urllib.urlencode({'object_id' : object_id, 'name': name})
+    return urllib2.urlopen(Request(url + '?' + params)).read() # HTTP GET
 
+
+if __name__ == '__main__':
     import doctest
     doctest.testmod()
