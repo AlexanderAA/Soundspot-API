@@ -116,7 +116,7 @@ def api_get_artist(object_id = '', name = ''):
     """ Get artist by its name and/or object id
     
     Example:
-        >>> api_get_venue(name = 'The Plenary, Melbourne Exhibition and Convention Centre, Southbank')
+        >>> api_get_venue(name = 'Chris Klondike Masuak & The North')
         {u'_id': ObjectId('4cd04980312f917a1c001d86'), u'kw_musician': [u'chris', u'klondike', u'masuak', u'&', u'the', u'north'], u'name': u'Chris Klondike Masuak & The North'}
         
     """
