@@ -1,0 +1,19 @@
+h2. Soundspot API
+
+This project provides wrappers for Soundspot API.
+
+
+h2. Installation
+
+Simply include provided code into your project
+
+
+h2. Introduction
+
+Soundspot uses an HTTP API with JSON returns.
+
+
+h2. Questions
+
+If you have any questions (or feature requests) regarding the API, please contact Alexander
+Abushkevich alex at extensibl.com.
