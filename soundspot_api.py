@@ -42,7 +42,7 @@ def api_ac_venues(q, limit = 10, offset = 0):
     """
     url = urlparse.urljoin(BASE_URL, URL_AC_VENUES)
     data = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset }) 
-    return urllib2.urlopen(Request(url, data)).read() # make POST request
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
 
 
 def api_ac_artists(q, limit = 10, offset = 0, url = ''):
@@ -60,7 +60,7 @@ def api_ac_artists(q, limit = 10, offset = 0, url = ''):
     """
     url = urlparse.urljoin(BASE_URL, URL_AC_ARTISTS)
     data = urllib.urlencode({ 'q': q, 'limit': limit, 'offset': offset })
-    return urllib2.urlopen(Request(url, data)).read() # make POST request
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
 
 
 def api_search(venue = '', artist = '', date = '', limit = 10, offset = 0):
@@ -95,7 +95,7 @@ def api_search(venue = '', artist = '', date = '', limit = 10, offset = 0):
                              'artist': artist, 
                              'date': date,
                              'limit' : limit, 'offset': offset})
-    return urllib2.urlopen(Request(url, data)).read()
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
 
 def api_get_venue(object_id = '', name = ''):
     """ Get venue by its name and/or object id
@@ -107,7 +107,7 @@ def api_get_venue(object_id = '', name = ''):
     """
     url = urlparse.urljoin(BASE_URL, URL_VENUE_GET)
     data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url, data)).read() 
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
 
 
 def api_get_artist(object_id = '', name = ''):
@@ -120,7 +120,7 @@ def api_get_artist(object_id = '', name = ''):
     """
     url = urlparse.urljoin(BASE_URL, URL_ARTIST_GET)
     data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url, data)).read() 
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
 
 def api_get_gig(object_id = '', name = ''):
     """ Get gig by its name and/or object id
@@ -132,7 +132,7 @@ def api_get_gig(object_id = '', name = ''):
     """
     url = urlparse.urljoin(BASE_URL, URL_GIG_GET)
     data = urllib.urlencode({'object_id' : object_id, 'name': name})
-    return urllib2.urlopen(Request(url, data)).read() 
+    return urllib2.urlopen(Request(url + '?' + data)).read() # HTTP GET
     
 if __name__ == '__main__':
 
