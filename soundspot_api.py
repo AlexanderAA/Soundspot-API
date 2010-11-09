@@ -20,12 +20,10 @@ URL_AC_ARTISTS = '/api/ac/artists'
 ## Search
 URL_SEARCH = '/api/search'
 
-## Operations with gigs
-URL_GIG_ADD = '/api/gig/add'
-
 ## Get venue or artist details
 URL_ARTIST_GET = '/api/artist/get'
 URL_VENUE_GET = '/api/venue/get'
+URL_GIG_GET = '/api/gig/get'
 # END CONSTANTS
 
 
@@ -116,7 +114,7 @@ def api_get_artist(object_id = '', name = ''):
     """ Get artist by its name and/or object id
     
     Example:
-        >>> api_get_venue(name = 'Chris Klondike Masuak & The North')
+        >>> api_get_artist(name = 'Chris Klondike Masuak & The North')
         {u'_id': ObjectId('4cd04980312f917a1c001d86'), u'kw_musician': [u'chris', u'klondike', u'masuak', u'&', u'the', u'north'], u'name': u'Chris Klondike Masuak & The North'}
         
     """
@@ -128,7 +126,7 @@ def api_get_gig(object_id = '', name = ''):
     """ Get gig by its name and/or object id
     
     Example:
-        >>> api_get_venue(name = 'The Plenary, Melbourne Exhibition and Convention Centre, Southbank')
+        >>> api_get_gig(object_id = '4cd04973312f917a1c000003')
         {u'name': None, u'artist': {u'name': u'Breaking Orbit'}, u'price': u'$12', u'venue': {u'name': u'Glacier, Frankston'}, u'kw_venue': [u'glacier,', u'frankston'], u'genre': u'Rock & Pop', u'state': u'VIC', u'time': u'8pm', u'date': u'Monday 4 October', u'datetime_parsed': datetime.datetime(2010, 10, 4, 20, 0), u'_id': ObjectId('4cd04973312f917a1c000003'), u'kw_musician': [u'breaking', u'orbit']}
         
     """
